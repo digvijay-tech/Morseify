@@ -23,7 +23,7 @@ class AppThemes {
       titleTextStyle: TextStyle(
         color: baseDarkColor,
         fontFamily: primaryFont,
-        fontSize: heading,
+        fontSize: subheading,
         letterSpacing: 1.0,
       ),
     ),
@@ -49,7 +49,7 @@ class AppThemes {
       titleTextStyle: TextStyle(
         color: baseLightColor,
         fontFamily: primaryFont,
-        fontSize: heading,
+        fontSize: subheading,
         letterSpacing: 1.0,
       ),
     ),

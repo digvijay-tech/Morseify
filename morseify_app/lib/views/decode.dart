@@ -7,7 +7,7 @@ class Decode extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text("Encode"),
+        child: Text("Decode"),
       ),
     );
   }

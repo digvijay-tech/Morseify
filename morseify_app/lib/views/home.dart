@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:morseify_app/widgets/home/customDrawer.dart';
+import 'package:morseify_app/widgets/home/greetings.dart';
+import 'package:morseify_app/widgets/home/options.dart';
+import 'package:morseify_app/widgets/home/recommend.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -9,7 +13,7 @@ class Home extends StatelessWidget {
       canPop: false,
       child: Scaffold(
         drawerEnableOpenDragGesture: false,
-        drawer: const Drawer(),
+        drawer: const CustomDrawer(),
         appBar: AppBar(
           automaticallyImplyLeading: false,
           leading: Builder(
@@ -21,9 +25,23 @@ class Home extends StatelessWidget {
             ),
           ),
           title: const Text("Morseify"),
+          actions: [
+            IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, "/settings");
+              },
+              icon: const Icon(Icons.settings),
+            ),
+          ],
         ),
-        body: const Center(
-          child: Text("home"),
+        body: SafeArea(
+          child: ListView(
+            children: const [
+              Greetings(),
+              Options(),
+              Recommend(),
+            ],
+          ),
         ),
       ),
     );
