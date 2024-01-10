@@ -1,4 +1,4 @@
-//
+// root of the app
 import 'package:flutter/material.dart';
 import 'package:morseify_app/utilities/themes.dart';
 
