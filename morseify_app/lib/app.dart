@@ -9,6 +9,9 @@ import 'package:morseify_app/views/settings.dart';
 import 'package:morseify_app/views/quiz.dart';
 import 'package:morseify_app/views/encode.dart';
 import 'package:morseify_app/views/decode.dart';
+import 'package:morseify_app/views/learn/learn.dart';
+import 'package:morseify_app/views/learn/dictionary.dart';
+import 'package:morseify_app/views/learn/listen.dart';
 
 class MorseifyApp extends StatelessWidget {
   final bool isDevelopment;
@@ -28,6 +31,9 @@ class MorseifyApp extends StatelessWidget {
         '/splash': (context) => const SplashScreen(),
         '/encode': (context) => const Encode(),
         '/decode': (context) => const Decode(),
+        '/learn': (context) => const Learn(),
+        '/learn/dictionary': (context) => const Dictionary(),
+        '/learn/listen': (context) => const PracticeListening(),
         '/quiz': (context) => const Quiz(),
         '/settings': (context) => const Settings(),
       },
