@@ -73,6 +73,30 @@ String textToMorse(String text) {
   return filteredMorseCode;
 }
 
+// Convert morse code to text
+String morseToText(String morseCode) {
+  // Split Morse code into words using space, slash, or newline as separators
+  final words = morseCode.split(RegExp(r' /|\s|/'));
+
+  // Translate each word from Morse code to text
+  final translatedWords = words.map((word) {
+    // Split the word into Morse code characters (letters)
+    final letters = word.split(' ');
+
+    // Translate each Morse code letter to text
+    final translatedLetters = letters.map((letter) {
+      return morseCodeMap.entries
+          .firstWhere((entry) => entry.value == letter,
+              orElse: () => MapEntry('', ''))
+          .key; // Find the key (text character) for the Morse code value
+    }).join(); // Join letters to form a word
+
+    return translatedLetters;
+  }).join(' '); // Join words to form the full sentence
+
+  return translatedWords;
+}
+
 // For playing morse code
 void playMorse(String code) async {
   final player = AudioPlayer();
@@ -92,4 +116,22 @@ void playMorse(String code) async {
   }
 
   player.dispose();
+}
+
+// for verifying a valid morse code string
+bool isValidMorse(String str) {
+  // Regex to match valid Morse code characters and word separators
+  final morsePattern = RegExp(r'^[.-]+|\/|(?:[.-]+(\s|$))+$');
+
+  // Splitting the input into parts based on spaces
+  final parts = str.trim().split(RegExp(r'\s+|\s*\/\s*'));
+
+  // Check each part of the input against the pattern
+  for (final part in parts) {
+    if (!morsePattern.hasMatch(part)) {
+      return false; // If any part doesn't match, the input is invalid
+    }
+  }
+
+  return true; // All parts match the pattern, the input is valid Morse code
 }
