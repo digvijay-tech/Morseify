@@ -78,6 +78,10 @@ class _DictionaryControlsState extends State<DictionaryControls> {
                         ),
                       ),
                       child: ListTile(
+                        onTap: () {
+                          // playing morse code
+                          playMorse(entry.value);
+                        },
                         title: Text(
                           "${entry.key}     ${entry.value}",
                           style: const TextStyle(
@@ -85,13 +89,7 @@ class _DictionaryControlsState extends State<DictionaryControls> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        trailing: IconButton(
-                          onPressed: () {
-                            // playing morse code
-                            playMorse(entry.value);
-                          },
-                          icon: const Icon(Icons.mic),
-                        ),
+                        trailing: const Icon(Icons.volume_up_rounded),
                       ),
                     ),
                 if (displayMorseCodes.isEmpty)
