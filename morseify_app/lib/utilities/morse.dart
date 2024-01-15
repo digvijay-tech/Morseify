@@ -1,6 +1,9 @@
 // Morse Code Helper file
 import 'package:audioplayers/audioplayers.dart';
 
+// Globally defined AudioPlayer instance
+final player = AudioPlayer();
+
 // Morse Map
 Map<String, String> morseCodeMap = {
   'A': '.-',
@@ -97,9 +100,8 @@ String morseToText(String morseCode) {
   return translatedWords;
 }
 
-// For playing morse code
+// Morse Code Audio Service
 void playMorse(String code) async {
-  final player = AudioPlayer();
   const dotDuration = 100;
 
   for (int i = 0; i < code.length; i++) {
@@ -114,8 +116,6 @@ void playMorse(String code) async {
       await Future.delayed(const Duration(milliseconds: 5 * dotDuration));
     }
   }
-
-  player.dispose();
 }
 
 // for verifying a valid morse code string

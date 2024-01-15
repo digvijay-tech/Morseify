@@ -12,7 +12,7 @@ class Dictionary extends StatelessWidget {
         title: const Text("Dictionary"),
       ),
       body: const SafeArea(
-        child: DictionaryControlls(),
+        child: DictionaryControls(),
       ),
     );
   }

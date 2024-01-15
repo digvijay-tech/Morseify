@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:morseify_app/widgets/learn/listeningControls.dart';
 
 class PracticeListening extends StatelessWidget {
   const PracticeListening({super.key});
@@ -11,9 +12,7 @@ class PracticeListening extends StatelessWidget {
         title: const Text("Practice Listening"),
       ),
       body: const SafeArea(
-        child: Center(
-          child: Text("listen"),
-        ),
+        child: ListeningControls(),
       ),
     );
   }

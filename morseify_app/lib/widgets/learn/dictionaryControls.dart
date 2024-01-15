@@ -3,14 +3,14 @@ import 'package:morseify_app/utilities/constants.dart';
 import 'package:morseify_app/utilities/morse.dart';
 
 // Filterable Dictionary ListView
-class DictionaryControlls extends StatefulWidget {
-  const DictionaryControlls({super.key});
+class DictionaryControls extends StatefulWidget {
+  const DictionaryControls({super.key});
 
   @override
-  State<DictionaryControlls> createState() => _DictionaryControllsState();
+  State<DictionaryControls> createState() => _DictionaryControlsState();
 }
 
-class _DictionaryControllsState extends State<DictionaryControlls> {
+class _DictionaryControlsState extends State<DictionaryControls> {
   // controllers
   final _searchInputController = TextEditingController();
 

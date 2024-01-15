@@ -20,4 +20,56 @@ List<Sentence> sentences = [
     morseStr:
         ".--- .- -.-. -.-   .-- . -. -   - ---   - .... .   --. -.-- -- .-.-.-",
   ),
+  Sentence(
+    id: 2,
+    text: "Students went to the canteen.",
+    morseStr:
+        "... - ..- -.. . -. - ...   .-- . -. -   - ---   - .... .   -.-. .- -. - . . -. .-.-.-",
+  ),
+  Sentence(
+    id: 3,
+    text: "Hello, how are you?",
+    morseStr:
+        ".... . .-.. .-.. --- --..--    .... --- .--    .- .-. .  -.-- --- ..- ..--..",
+  ),
+  Sentence(
+    id: 4,
+    text: "Good morning, have a great day!",
+    morseStr:
+        "--. --- --- -..    -- --- .-. -. .. -. --. --..--    .... .- ...- .    .-    --. .-. . .- -    -.. .- -.-- -.-.--",
+  ),
+  Sentence(
+    id: 5,
+    text: "I love learning morse code.",
+    morseStr:
+        "..    .-.. --- ...- .    .-.. . .- .-. -. .. -. --.    -- --- .-. ... .    -.-. --- -.. . .-.-.-",
+  ),
+  Sentence(
+    id: 6,
+    text: "Thank you for your help.",
+    morseStr:
+        "- .... .- -. -.-    -.-- --- ..-    ..-. --- .-.    -.-- --- ..- .-.    .... . .-.. .--. .-.-.-",
+  ),
+  Sentence(
+    id: 7,
+    text: "Today is a beautiful day.",
+    morseStr:
+        "- --- -.. .- -.--    .. ...    .-    -... . .- ..- - .. ..-. ..- .-..    -.. .- -.-- .-.-.-",
+  ),
+  Sentence(
+    id: 8,
+    text: "Meeting at 3 pm sharp.",
+    morseStr:
+        "-- . . - .. -. --.    .- -    ...--    .--. --    ... .... .- .-. .--. .-.-.-",
+  ),
+  Sentence(
+    id: 9,
+    text: "Enjoy your meal.",
+    morseStr: ". -. .--- --- -.--    -.-- --- ..- .-.    -- . .- .-.. .-.-.-",
+  ),
+  Sentence(
+    id: 10,
+    text: "See you later.",
+    morseStr: "... . .    -.-- --- ..-    .-.. .- - . .-. .-.-.-",
+  ),
 ];
