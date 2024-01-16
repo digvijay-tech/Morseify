@@ -1,5 +1,6 @@
 // Quiz logic and controls
 import 'package:flutter/material.dart';
+import 'package:morseify_app/widgets/quiz/optionSerializer.dart';
 import 'dart:math';
 import 'package:morseify_app/widgets/quiz/questionDisplay.dart';
 import 'package:morseify_app/utilities/constants.dart';
@@ -19,19 +20,65 @@ class _QuizControlsState extends State<QuizControls> {
   // get all question
   final List<Question> questions = questionBank;
 
+  // new questionbank with shuffled options
+  List<Question> questionsWithShuffledOptions = [];
+
   // picked question index
   int pickedIndex = 0;
+
+  // tracking number of questions asked/answered/skipped
+  int questionCount = 0;
+  int correctAnswerCount = 0;
+  bool showResult = false;
+
+  // tracking selected option
+  int selectedOptionIndex = -1; // -1 indicates no selection
 
   // randomly pick question from questions list
   int pickQuestion(List<Question> list) {
     if (list.isNotEmpty) {
       int randomIndex = random.nextInt(list.length);
-      print(randomIndex);
+
       return randomIndex;
     }
 
     // reurning -1 to indicate problem
     return -1;
+  }
+
+  // shuffle options in the question bank instance
+  void shuffleAllOptions() {
+    for (int i = 0; i < questions.length; i++) {
+      questions[i].options.shuffle();
+    }
+  }
+
+  // processing correct answers
+  void confirmAndNext() {
+    // proceeding only if user selects any option
+    if (selectedOptionIndex != -1) {
+      // getting option index
+      int optionIndex = questions[pickedIndex]
+          .options
+          .indexWhere((option) => option.optionId == selectedOptionIndex);
+
+      // verify correct answer
+      if (questions[pickedIndex].correctOptionId ==
+          questions[pickedIndex].options[optionIndex].optionId) {
+        setState(() {
+          // increament on eac correct choice
+          correctAnswerCount += 1;
+
+          // show result to the user
+          showResult = true;
+        });
+      } else {
+        setState(() {
+          // show result to the user
+          showResult = true;
+        });
+      }
+    }
   }
 
   // set random index to 1st questino when quiz starts
@@ -40,7 +87,11 @@ class _QuizControlsState extends State<QuizControls> {
     super.initState();
 
     setState(() {
+      questionCount = 1;
       pickedIndex = pickQuestion(questions);
+
+      // shuffling all the options for all questions
+      shuffleAllOptions();
     });
   }
 
@@ -52,8 +103,9 @@ class _QuizControlsState extends State<QuizControls> {
         Expanded(
           flex: 2,
           child: QuestionDisplay(
-            questionIndex: questions[pickedIndex].id,
+            questionCount: questionCount,
             questionText: questions[pickedIndex].question,
+            correctAnswerCount: correctAnswerCount,
           ),
         ),
         Expanded(
@@ -67,7 +119,9 @@ class _QuizControlsState extends State<QuizControls> {
                   children: [
                     const Text("Only one correct answer:"),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        print("Skip questoin tapped..");
+                      },
                       style: const ButtonStyle(
                         overlayColor: MaterialStatePropertyAll(
                           Color(0x5F8E8E8E),
@@ -94,31 +148,72 @@ class _QuizControlsState extends State<QuizControls> {
                   ],
                 ),
                 const SizedBox(height: 8.0),
-                for (int i = 0; i < questions[pickedIndex].options.length; i++)
-                  ListTile(
-                    onTap: () {},
-                    title: Text(
-                      "Option ${questions[pickedIndex].options[i].optionId}",
-                      style: const TextStyle(fontSize: caption),
+
+                // show correct as well as the incorrect options
+                if (showResult)
+                  for (int i = 0;
+                      i < questions[pickedIndex].options.length;
+                      i++)
+                    ListTile(
+                      // post answer view user can't select anything
+                      onTap: null, // always remain disabled
+                      enabled: false, // always remain disabled
+                      title: (selectedOptionIndex ==
+                              questions[pickedIndex].options[i].optionId)
+                          ? OptionSerializer(index: i, isChosen: true)
+                          : OptionSerializer(index: i, isChosen: false),
+                      subtitle: Text(
+                        questions[pickedIndex].options[i].option,
+                        style: const TextStyle(fontSize: 30.0),
+                      ),
+                      trailing: (questions[pickedIndex].correctOptionId ==
+                              questions[pickedIndex].options[i].optionId)
+                          ? const Icon(Icons.check_circle)
+                          : const Icon(Icons.cancel),
                     ),
-                    subtitle: Text(
-                      questions[pickedIndex].options[i].option,
-                      style: const TextStyle(fontSize: 30.0),
+
+                // active selection field
+                if (!showResult)
+                  for (int i = 0;
+                      i < questions[pickedIndex].options.length;
+                      i++)
+                    ListTile(
+                      onTap: () {
+                        setState(() {
+                          selectedOptionIndex =
+                              questions[pickedIndex].options[i].optionId;
+                        });
+                      },
+                      enabled: true,
+                      title: OptionSerializer(
+                        index: i,
+                        isChosen: false,
+                      ),
+                      subtitle: Text(
+                        questions[pickedIndex].options[i].option,
+                        style: const TextStyle(fontSize: 30.0),
+                      ),
+                      trailing: (selectedOptionIndex ==
+                              questions[pickedIndex].options[i].optionId)
+                          ? const Icon(Icons.check_circle)
+                          : const Icon(Icons.circle_outlined),
                     ),
-                    trailing: const Icon(Icons.circle_outlined),
-                  ),
 
                 const SizedBox(height: 6.0),
 
                 // Next Button
                 ElevatedButton(
-                  onPressed: () {
-                    var temp = pickQuestion(questions);
-                    print(temp);
-                  },
-                  style: const ButtonStyle(
-                    backgroundColor: MaterialStatePropertyAll(primaryColor),
-                  ),
+                  onPressed: confirmAndNext,
+                  style: (selectedOptionIndex == -1)
+                      ? const ButtonStyle(
+                          backgroundColor:
+                              MaterialStatePropertyAll(Colors.grey),
+                          splashFactory: NoSplash.splashFactory,
+                        )
+                      : const ButtonStyle(
+                          backgroundColor:
+                              MaterialStatePropertyAll(primaryColor),
+                        ),
                   child: const Text(
                     "Confirm & Next",
                     style: TextStyle(color: baseLightColor),

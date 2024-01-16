@@ -507,7 +507,8 @@ List<Question> questionBank = [
     options: [
       Options(optionId: 1, option: '.....'),
       Options(optionId: 2, option: '..---'),
-      Options(optionId: 3, option: '.-.-.-')
+      Options(optionId: 3, option: '.-.-.-'),
+      Options(optionId: 4, option: '....-')
     ],
     correctOptionId: 3,
     correctOption: ".-.-.-",
@@ -519,7 +520,8 @@ List<Question> questionBank = [
     options: [
       Options(optionId: 1, option: '----.'),
       Options(optionId: 2, option: '--..--'),
-      Options(optionId: 3, option: '..---')
+      Options(optionId: 3, option: '..---'),
+      Options(optionId: 4, option: '._..-')
     ],
     correctOptionId: 2,
     correctOption: "--..--",
@@ -531,7 +533,8 @@ List<Question> questionBank = [
     options: [
       Options(optionId: 1, option: '..--..'),
       Options(optionId: 2, option: '....-'),
-      Options(optionId: 3, option: '..---')
+      Options(optionId: 3, option: '..---'),
+      Options(optionId: 4, option: '--..-')
     ],
     correctOptionId: 1,
     correctOption: "..--..",
@@ -543,7 +546,8 @@ List<Question> questionBank = [
     options: [
       Options(optionId: 1, option: '..--..'),
       Options(optionId: 2, option: '-.-.--'),
-      Options(optionId: 3, option: '..---')
+      Options(optionId: 3, option: '..---'),
+      Options(optionId: 4, option: '....-')
     ],
     correctOptionId: 2,
     correctOption: "-.-.--",
@@ -555,7 +559,8 @@ List<Question> questionBank = [
     options: [
       Options(optionId: 1, option: '..--..'),
       Options(optionId: 2, option: '-.-.--'),
-      Options(optionId: 3, option: '.-...')
+      Options(optionId: 3, option: '.-...'),
+      Options(optionId: 4, option: '..---')
     ],
     correctOptionId: 3,
     correctOption: ".-...",
@@ -567,7 +572,8 @@ List<Question> questionBank = [
     options: [
       Options(optionId: 1, option: '---...'),
       Options(optionId: 2, option: '-.-.--'),
-      Options(optionId: 3, option: '.-...')
+      Options(optionId: 3, option: '.-...'),
+      Options(optionId: 4, option: '--..-')
     ],
     correctOptionId: 1,
     correctOption: "---...",
@@ -579,7 +585,8 @@ List<Question> questionBank = [
     options: [
       Options(optionId: 1, option: '-.-.-.'),
       Options(optionId: 2, option: '-.-.--'),
-      Options(optionId: 3, option: '.-...')
+      Options(optionId: 3, option: '.-...'),
+      Options(optionId: 4, option: '....-')
     ],
     correctOptionId: 1,
     correctOption: "-.-.-.",
@@ -591,7 +598,8 @@ List<Question> questionBank = [
     options: [
       Options(optionId: 1, option: '-.-.-.'),
       Options(optionId: 2, option: '-.-.--'),
-      Options(optionId: 3, option: '-...-')
+      Options(optionId: 3, option: '-...-'),
+      Options(optionId: 4, option: '--..-')
     ],
     correctOptionId: 3,
     correctOption: "-...-",
@@ -603,7 +611,8 @@ List<Question> questionBank = [
     options: [
       Options(optionId: 1, option: '.--.-.'),
       Options(optionId: 2, option: '..-.--'),
-      Options(optionId: 3, option: '.-.-.')
+      Options(optionId: 3, option: '.-.-.'),
+      Options(optionId: 4, option: '.-..-')
     ],
     correctOptionId: 3,
     correctOption: ".-.-.",
@@ -615,7 +624,8 @@ List<Question> questionBank = [
     options: [
       Options(optionId: 1, option: '.--.-.'),
       Options(optionId: 2, option: '-....-'),
-      Options(optionId: 3, option: '.-.-.')
+      Options(optionId: 3, option: '.-.-.'),
+      Options(optionId: 4, option: '...--')
     ],
     correctOptionId: 2,
     correctOption: "-....-",
@@ -627,7 +637,8 @@ List<Question> questionBank = [
     options: [
       Options(optionId: 1, option: '..--.-'),
       Options(optionId: 2, option: '-....-'),
-      Options(optionId: 3, option: '--.-.-')
+      Options(optionId: 3, option: '--.-.-'),
+      Options(optionId: 4, option: '....-')
     ],
     correctOptionId: 1,
     correctOption: "..--.-",
@@ -639,7 +650,8 @@ List<Question> questionBank = [
     options: [
       Options(optionId: 1, option: '..--.-'),
       Options(optionId: 2, option: '...-..-'),
-      Options(optionId: 3, option: '...-.--')
+      Options(optionId: 3, option: '...-.--'),
+      Options(optionId: 4, option: '-...-')
     ],
     correctOptionId: 2,
     correctOption: "...-..-",
@@ -651,7 +663,8 @@ List<Question> questionBank = [
     options: [
       Options(optionId: 1, option: '.---.-'),
       Options(optionId: 2, option: '...-..-'),
-      Options(optionId: 3, option: '.--.-.')
+      Options(optionId: 3, option: '.--.-.'),
+      Options(optionId: 4, option: '-..--')
     ],
     correctOptionId: 3,
     correctOption: ".--.-.",
