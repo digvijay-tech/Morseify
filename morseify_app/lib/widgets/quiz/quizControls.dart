@@ -153,13 +153,15 @@ class _QuizControlsState extends State<QuizControls> {
           flex: 2,
           child: (quizEnded)
               ? QuestionDisplay(
-                  questionCount: 10,
+                  questionCount: 10, // default value (always fixed)
+                  isAudioQuestion: false, // default value (always fixed)
                   questionText:
                       "You scored $correctAnswerCount/10. Thanks for playing.\n... . .   -.-- --- ..-   .- --. .- .. -. -.-.--",
                   correctAnswerCount: correctAnswerCount,
                 )
               : QuestionDisplay(
                   questionCount: questionCount,
+                  isAudioQuestion: questions[pickedIndex].isAudioQuestion,
                   questionText: questions[pickedIndex].question,
                   correctAnswerCount: correctAnswerCount,
                 ),
@@ -190,7 +192,9 @@ class _QuizControlsState extends State<QuizControls> {
                           : OptionSerializer(index: i, isChosen: false),
                       subtitle: Text(
                         questions[pickedIndex].options[i].option,
-                        style: const TextStyle(fontSize: 30.0),
+                        style: (questions[pickedIndex].isAudioQuestion)
+                            ? const TextStyle(fontSize: body)
+                            : const TextStyle(fontSize: subheading),
                       ),
                       trailing: (questions[pickedIndex].correctOptionId ==
                               questions[pickedIndex].options[i].optionId)
@@ -221,7 +225,9 @@ class _QuizControlsState extends State<QuizControls> {
                       ),
                       subtitle: Text(
                         questions[pickedIndex].options[i].option,
-                        style: const TextStyle(fontSize: 30.0),
+                        style: (questions[pickedIndex].isAudioQuestion)
+                            ? const TextStyle(fontSize: body)
+                            : const TextStyle(fontSize: subheading),
                       ),
                       trailing: (selectedOptionIndex ==
                               questions[pickedIndex].options[i].optionId)

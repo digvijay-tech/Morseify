@@ -1,15 +1,18 @@
 // Question Display widget
 import 'package:flutter/material.dart';
+import 'package:morseify_app/utilities/morse.dart';
 import 'package:morseify_app/utilities/constants.dart';
 
 class QuestionDisplay extends StatelessWidget {
   final int questionCount;
+  final bool isAudioQuestion;
   final String questionText;
   final int correctAnswerCount;
 
   const QuestionDisplay({
     super.key,
     required this.questionCount,
+    required this.isAudioQuestion,
     required this.questionText,
     required this.correctAnswerCount,
   });
@@ -22,6 +25,7 @@ class QuestionDisplay extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          // header that keeps tracks of question count and correct answer count
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -41,6 +45,7 @@ class QuestionDisplay extends StatelessWidget {
               ),
             ],
           ),
+          // actual question box (place where question or play button will appear)
           Expanded(
             child: Container(
               margin: const EdgeInsets.only(top: 10.0),
@@ -49,14 +54,36 @@ class QuestionDisplay extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10.0),
               ),
               child: Center(
-                child: Text(
-                  questionText,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontSize: heading,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                child: (isAudioQuestion)
+                    ? Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            "Listen to Morse and answer?",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: heading,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              print("Play morse code..");
+                              print(questionText);
+                              playMorse(questionText);
+                            },
+                            icon: const Icon(Icons.play_arrow),
+                          ),
+                        ],
+                      )
+                    : Text(
+                        questionText,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontSize: heading,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
               ),
             ),
           ),

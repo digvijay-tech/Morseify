@@ -107,13 +107,13 @@ void playMorse(String code) async {
   for (int i = 0; i < code.length; i++) {
     if (code[i] == ".") {
       await player.play(AssetSource("audios/dot.mp3"));
-      await Future.delayed(const Duration(milliseconds: 3 * dotDuration));
+      await Future.delayed(const Duration(milliseconds: 4 * dotDuration));
     } else if (code[i] == "-") {
       await player.play(AssetSource("audios/dash.mp3"));
-      await Future.delayed(const Duration(milliseconds: 4 * dotDuration));
+      await Future.delayed(const Duration(milliseconds: 5 * dotDuration));
     } else if (code[i] == " ") {
       // Pause for space (word separator)
-      await Future.delayed(const Duration(milliseconds: 5 * dotDuration));
+      await Future.delayed(const Duration(milliseconds: 6 * dotDuration));
     }
   }
 }

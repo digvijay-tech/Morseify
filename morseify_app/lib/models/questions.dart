@@ -32,6 +32,7 @@ class Question {
 
 // Questions Array
 List<Question> questionBank = [
+  // text based questions (Text -> Morse)
   Question(
     id: 1,
     isAudioQuestion: false,
@@ -669,4 +670,454 @@ List<Question> questionBank = [
     correctOptionId: 3,
     correctOption: ".--.-.",
   ),
+  // text based questions (Morse -> Text)
+  Question(
+    id: 50,
+    isAudioQuestion: false,
+    question: "What is text representation of '.-' ?",
+    options: [
+      Options(optionId: 1, option: 'Q'),
+      Options(optionId: 2, option: 'B'),
+      Options(optionId: 3, option: 'A'),
+      Options(optionId: 4, option: 'I')
+    ],
+    correctOptionId: 3,
+    correctOption: "A",
+  ),
+  Question(
+    id: 51,
+    isAudioQuestion: false,
+    question: "What is text representation of '-...' ?",
+    options: [
+      Options(optionId: 1, option: 'B'),
+      Options(optionId: 2, option: 'A'),
+      Options(optionId: 3, option: '0'),
+      Options(optionId: 4, option: '?')
+    ],
+    correctOptionId: 1,
+    correctOption: "B",
+  ),
+  Question(
+    id: 52,
+    isAudioQuestion: false,
+    question: "What is text representation of '-.-.' ?",
+    options: [
+      Options(optionId: 1, option: 'L'),
+      Options(optionId: 2, option: 'X'),
+      Options(optionId: 3, option: 'P'),
+      Options(optionId: 4, option: 'C')
+    ],
+    correctOptionId: 4,
+    correctOption: "C",
+  ),
+  Question(
+    id: 53,
+    isAudioQuestion: false,
+    question: "What is text representation of '-..' ?",
+    options: [
+      Options(optionId: 1, option: 'W'),
+      Options(optionId: 2, option: 'V'),
+      Options(optionId: 3, option: 'P'),
+      Options(optionId: 4, option: 'D')
+    ],
+    correctOptionId: 4,
+    correctOption: "D",
+  ),
+  Question(
+    id: 54,
+    isAudioQuestion: false,
+    question: "What is text representation of '.' ?",
+    options: [
+      Options(optionId: 1, option: 'E'),
+      Options(optionId: 2, option: 'V'),
+      Options(optionId: 3, option: 'P'),
+      Options(optionId: 4, option: 'D')
+    ],
+    correctOptionId: 1,
+    correctOption: "E",
+  ),
+  Question(
+    id: 55,
+    isAudioQuestion: false,
+    question: "What is text representation of '..-.' ?",
+    options: [
+      Options(optionId: 1, option: 'Y'),
+      Options(optionId: 2, option: 'V'),
+      Options(optionId: 3, option: 'F'),
+      Options(optionId: 4, option: 'K')
+    ],
+    correctOptionId: 3,
+    correctOption: "F",
+  ),
+  Question(
+    id: 56,
+    isAudioQuestion: false,
+    question: "What is text representation of '--.' ?",
+    options: [
+      Options(optionId: 1, option: ';'),
+      Options(optionId: 2, option: 'P'),
+      Options(optionId: 3, option: 'G'),
+      Options(optionId: 4, option: 'Z')
+    ],
+    correctOptionId: 3,
+    correctOption: "G",
+  ),
+  Question(
+    id: 57,
+    isAudioQuestion: false,
+    question: "What is text representation of '....' ?",
+    options: [
+      Options(optionId: 1, option: 'Y'),
+      Options(optionId: 2, option: 'H'),
+      Options(optionId: 3, option: 'G'),
+      Options(optionId: 4, option: 'K')
+    ],
+    correctOptionId: 2,
+    correctOption: "H",
+  ),
+  Question(
+    id: 58,
+    isAudioQuestion: false,
+    question: "What is text representation of '..' ?",
+    options: [
+      Options(optionId: 1, option: 'I'),
+      Options(optionId: 2, option: 'B'),
+      Options(optionId: 3, option: 'J'),
+      Options(optionId: 4, option: 'R')
+    ],
+    correctOptionId: 1,
+    correctOption: "I",
+  ),
+  Question(
+    id: 59,
+    isAudioQuestion: false,
+    question: "What is text representation of '.---' ?",
+    options: [
+      Options(optionId: 1, option: 'E'),
+      Options(optionId: 2, option: 'M'),
+      Options(optionId: 3, option: ','),
+      Options(optionId: 4, option: 'J')
+    ],
+    correctOptionId: 4,
+    correctOption: "J",
+  ),
+  Question(
+    id: 60,
+    isAudioQuestion: false,
+    question: "What is text representation of '-.-' ?",
+    options: [
+      Options(optionId: 1, option: 'O'),
+      Options(optionId: 2, option: 'H'),
+      Options(optionId: 3, option: 'K'),
+      Options(optionId: 4, option: 'X')
+    ],
+    correctOptionId: 3,
+    correctOption: "K",
+  ),
+  Question(
+    id: 61,
+    isAudioQuestion: false,
+    question: "What is text representation of '.-..' ?",
+    options: [
+      Options(optionId: 1, option: 'N'),
+      Options(optionId: 2, option: 'U'),
+      Options(optionId: 3, option: '1'),
+      Options(optionId: 4, option: 'L')
+    ],
+    correctOptionId: 4,
+    correctOption: "L",
+  ),
+  Question(
+    id: 62,
+    isAudioQuestion: false,
+    question: "What is text representation of '--' ?",
+    options: [
+      Options(optionId: 1, option: 'M'),
+      Options(optionId: 2, option: 'D'),
+      Options(optionId: 3, option: 'X'),
+      Options(optionId: 4, option: 'V')
+    ],
+    correctOptionId: 1,
+    correctOption: "M",
+  ),
+  Question(
+    id: 63,
+    isAudioQuestion: false,
+    question: "What is text representation of '-.' ?",
+    options: [
+      Options(optionId: 1, option: 'M'),
+      Options(optionId: 2, option: '.'),
+      Options(optionId: 3, option: 'N'),
+      Options(optionId: 4, option: '+')
+    ],
+    correctOptionId: 3,
+    correctOption: "N",
+  ),
+  Question(
+    id: 64,
+    isAudioQuestion: false,
+    question: "What is text representation of '---' ?",
+    options: [
+      Options(optionId: 1, option: 'W'),
+      Options(optionId: 2, option: 'O'),
+      Options(optionId: 3, option: 'V'),
+      Options(optionId: 4, option: '3')
+    ],
+    correctOptionId: 2,
+    correctOption: "O",
+  ),
+  Question(
+    id: 65,
+    isAudioQuestion: false,
+    question: "What is text representation of '.--.' ?",
+    options: [
+      Options(optionId: 1, option: 'W'),
+      Options(optionId: 2, option: 'C'),
+      Options(optionId: 3, option: 'L'),
+      Options(optionId: 4, option: 'P')
+    ],
+    correctOptionId: 4,
+    correctOption: "P",
+  ),
+  Question(
+    id: 66,
+    isAudioQuestion: false,
+    question: "What is text representation of '--.-' ?",
+    options: [
+      Options(optionId: 1, option: 'Q'),
+      Options(optionId: 2, option: '-'),
+      Options(optionId: 3, option: 'S'),
+      Options(optionId: 4, option: 'R')
+    ],
+    correctOptionId: 1,
+    correctOption: "Q",
+  ),
+  Question(
+    id: 67,
+    isAudioQuestion: false,
+    question: "What is text representation of '.-.' ?",
+    options: [
+      Options(optionId: 1, option: 'R'),
+      Options(optionId: 2, option: 'O'),
+      Options(optionId: 3, option: 'S'),
+      Options(optionId: 4, option: 'X')
+    ],
+    correctOptionId: 1,
+    correctOption: "R",
+  ),
+  Question(
+    id: 68,
+    isAudioQuestion: false,
+    question: "What is text representation of '...' ?",
+    options: [
+      Options(optionId: 1, option: 'E'),
+      Options(optionId: 2, option: 'J'),
+      Options(optionId: 3, option: 'S'),
+      Options(optionId: 4, option: 'P')
+    ],
+    correctOptionId: 3,
+    correctOption: "S",
+  ),
+  Question(
+    id: 69,
+    isAudioQuestion: false,
+    question: "What is text representation of '-' ?",
+    options: [
+      Options(optionId: 1, option: 'E'),
+      Options(optionId: 2, option: 'T'),
+      Options(optionId: 3, option: 'W'),
+      Options(optionId: 4, option: 'N')
+    ],
+    correctOptionId: 2,
+    correctOption: "T",
+  ),
+  Question(
+    id: 70,
+    isAudioQuestion: false,
+    question: "What is text representation of '..-' ?",
+    options: [
+      Options(optionId: 1, option: 'Y'),
+      Options(optionId: 2, option: 'W'),
+      Options(optionId: 3, option: 'U'),
+      Options(optionId: 4, option: 'V')
+    ],
+    correctOptionId: 3,
+    correctOption: "U",
+  ),
+  Question(
+    id: 71,
+    isAudioQuestion: false,
+    question: "What is text representation of '...-' ?",
+    options: [
+      Options(optionId: 1, option: 'X'),
+      Options(optionId: 2, option: 'I'),
+      Options(optionId: 3, option: 'K'),
+      Options(optionId: 4, option: 'V')
+    ],
+    correctOptionId: 4,
+    correctOption: "V",
+  ),
+  Question(
+    id: 72,
+    isAudioQuestion: false,
+    question: "What is text representation of '.--' ?",
+    options: [
+      Options(optionId: 1, option: 'W'),
+      Options(optionId: 2, option: 'G'),
+      Options(optionId: 3, option: ';'),
+      Options(optionId: 4, option: 'Y')
+    ],
+    correctOptionId: 1,
+    correctOption: "W",
+  ),
+  Question(
+    id: 73,
+    isAudioQuestion: false,
+    question: "What is text representation of '-..-' ?",
+    options: [
+      Options(optionId: 1, option: 'R'),
+      Options(optionId: 2, option: 'X'),
+      Options(optionId: 3, option: ':'),
+      Options(optionId: 4, option: 'P')
+    ],
+    correctOptionId: 2,
+    correctOption: "X",
+  ),
+  Question(
+    id: 74,
+    isAudioQuestion: false,
+    question: "What is text representation of '-.--' ?",
+    options: [
+      Options(optionId: 1, option: 'F'),
+      Options(optionId: 2, option: 'J'),
+      Options(optionId: 3, option: 'Y'),
+      Options(optionId: 4, option: 'A')
+    ],
+    correctOptionId: 3,
+    correctOption: "Y",
+  ),
+  Question(
+    id: 75,
+    isAudioQuestion: false,
+    question: "What is text representation of '--..' ?",
+    options: [
+      Options(optionId: 1, option: 'F'),
+      Options(optionId: 2, option: 'J'),
+      Options(optionId: 3, option: 'Y'),
+      Options(optionId: 4, option: 'Z')
+    ],
+    correctOptionId: 4,
+    correctOption: "Z",
+  ),
+  /*
+    ids from 76 to 100 are left empty intentionally 
+    for future adjustments (if any)
+  */
+
+  // audio based questions (Morse -> Text)
+  Question(
+    id: 101,
+    isAudioQuestion: true,
+    question: ".-",
+    options: [
+      Options(optionId: 1, option: 'A'),
+      Options(optionId: 2, option: 'J'),
+      Options(optionId: 3, option: 'P'),
+      Options(optionId: 4, option: 'Z')
+    ],
+    correctOptionId: 1,
+    correctOption: "A",
+  ),
+  Question(
+    id: 102,
+    isAudioQuestion: true,
+    question: "-...",
+    options: [
+      Options(optionId: 1, option: 'B'),
+      Options(optionId: 2, option: 'N'),
+      Options(optionId: 3, option: 'X'),
+      Options(optionId: 4, option: ';')
+    ],
+    correctOptionId: 1,
+    correctOption: "B",
+  ),
+  Question(
+    id: 103,
+    isAudioQuestion: true,
+    question: "-.-.",
+    options: [
+      Options(optionId: 1, option: 'I'),
+      Options(optionId: 2, option: 'Q'),
+      Options(optionId: 3, option: 'J'),
+      Options(optionId: 4, option: 'C')
+    ],
+    correctOptionId: 4,
+    correctOption: "C",
+  ),
+  Question(
+    id: 104,
+    isAudioQuestion: true,
+    question: "-..",
+    options: [
+      Options(optionId: 1, option: 'H'),
+      Options(optionId: 2, option: 'A'),
+      Options(optionId: 3, option: 'T'),
+      Options(optionId: 4, option: 'D')
+    ],
+    correctOptionId: 4,
+    correctOption: "D",
+  ),
+  Question(
+    id: 105,
+    isAudioQuestion: true,
+    question: ".",
+    options: [
+      Options(optionId: 1, option: 'W'),
+      Options(optionId: 2, option: 'D'),
+      Options(optionId: 3, option: 'E'),
+      Options(optionId: 4, option: 'Z')
+    ],
+    correctOptionId: 3,
+    correctOption: "E",
+  ),
+  Question(
+    id: 106,
+    isAudioQuestion: true,
+    question: "..-.",
+    options: [
+      Options(optionId: 1, option: 'W'),
+      Options(optionId: 2, option: 'F'),
+      Options(optionId: 3, option: 'E'),
+      Options(optionId: 4, option: 'Z')
+    ],
+    correctOptionId: 2,
+    correctOption: "F",
+  ),
+  Question(
+    id: 107,
+    isAudioQuestion: true,
+    question: "--.",
+    options: [
+      Options(optionId: 1, option: 'G'),
+      Options(optionId: 2, option: 'N'),
+      Options(optionId: 3, option: 'O'),
+      Options(optionId: 4, option: 'M')
+    ],
+    correctOptionId: 1,
+    correctOption: "G",
+  ),
+  Question(
+    id: 108,
+    isAudioQuestion: true,
+    question: "....",
+    options: [
+      Options(optionId: 1, option: 'H'),
+      Options(optionId: 2, option: 'P'),
+      Options(optionId: 3, option: 'C'),
+      Options(optionId: 4, option: 'J')
+    ],
+    correctOptionId: 1,
+    correctOption: "H",
+  ),
+  // Continue from I
 ];
