@@ -1,4 +1,5 @@
 // Quiz logic and controls
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:morseify_app/widgets/quiz/optionSerializer.dart';
 import 'dart:math';
@@ -30,6 +31,11 @@ class _QuizControlsState extends State<QuizControls> {
   int questionCount = 0;
   int correctAnswerCount = 0;
   bool showResult = false;
+  bool isLoading = false;
+  bool isDisabled = true;
+
+  // tracking end of the game
+  bool quizEnded = false;
 
   // tracking selected option
   int selectedOptionIndex = -1; // -1 indicates no selection
@@ -56,7 +62,16 @@ class _QuizControlsState extends State<QuizControls> {
   // processing correct answers
   void confirmAndNext() {
     // proceeding only if user selects any option
-    if (selectedOptionIndex != -1) {
+    if (selectedOptionIndex != -1 && !isDisabled) {
+      // show loading state on button
+      setState(() {
+        isLoading = true;
+        isDisabled = true;
+      });
+
+      // increment question count
+      questionCount += 1;
+
       // getting option index
       int optionIndex = questions[pickedIndex]
           .options
@@ -78,7 +93,41 @@ class _QuizControlsState extends State<QuizControls> {
           showResult = true;
         });
       }
+
+      // check end condition before proceeding furthur
+      if (questionCount == 11) {
+        endQuiz();
+      } else {
+        // proceed to next question
+        Timer(const Duration(milliseconds: 500), () {
+          setState(() {
+            // reset selection
+            selectedOptionIndex = -1;
+
+            // hide result
+            showResult = false;
+
+            // change question
+            pickedIndex = pickQuestion(questions);
+
+            // end loading state on button
+            isLoading = false;
+          });
+        });
+      }
     }
+  }
+
+  // end game
+  void endQuiz() {
+    // reset everything
+    setState(() {
+      quizEnded = true;
+      selectedOptionIndex = -1;
+      showResult = true;
+      isDisabled = true;
+      isLoading = false;
+    });
   }
 
   // set random index to 1st questino when quiz starts
@@ -102,51 +151,28 @@ class _QuizControlsState extends State<QuizControls> {
       children: [
         Expanded(
           flex: 2,
-          child: QuestionDisplay(
-            questionCount: questionCount,
-            questionText: questions[pickedIndex].question,
-            correctAnswerCount: correctAnswerCount,
-          ),
+          child: (quizEnded)
+              ? QuestionDisplay(
+                  questionCount: 10,
+                  questionText:
+                      "You scored $correctAnswerCount/10. Thanks for playing.\n... . .   -.-- --- ..-   .- --. .- .. -. -.-.--",
+                  correctAnswerCount: correctAnswerCount,
+                )
+              : QuestionDisplay(
+                  questionCount: questionCount,
+                  questionText: questions[pickedIndex].question,
+                  correctAnswerCount: correctAnswerCount,
+                ),
         ),
         Expanded(
           flex: 3,
           child: Container(
             padding: const EdgeInsets.all(16.0),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text("Only one correct answer:"),
-                    TextButton(
-                      onPressed: () {
-                        print("Skip questoin tapped..");
-                      },
-                      style: const ButtonStyle(
-                        overlayColor: MaterialStatePropertyAll(
-                          Color(0x5F8E8E8E),
-                        ),
-                        backgroundColor: MaterialStatePropertyAll(
-                          Color(0xB8A8A7A7),
-                        ),
-                      ),
-                      child: const Row(
-                        children: [
-                          Text(
-                            "Skip",
-                            style: TextStyle(color: baseLightColor),
-                          ),
-                          SizedBox(width: 4.0),
-                          Icon(
-                            Icons.double_arrow,
-                            size: body,
-                            color: baseLightColor,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+                const Text("Only one correct answer:"),
+
                 const SizedBox(height: 8.0),
 
                 // show correct as well as the incorrect options
@@ -180,8 +206,12 @@ class _QuizControlsState extends State<QuizControls> {
                     ListTile(
                       onTap: () {
                         setState(() {
+                          // set selected index
                           selectedOptionIndex =
                               questions[pickedIndex].options[i].optionId;
+
+                          // enable button
+                          isDisabled = false;
                         });
                       },
                       enabled: true,
@@ -202,23 +232,39 @@ class _QuizControlsState extends State<QuizControls> {
                 const SizedBox(height: 6.0),
 
                 // Next Button
-                ElevatedButton(
-                  onPressed: confirmAndNext,
-                  style: (selectedOptionIndex == -1)
-                      ? const ButtonStyle(
-                          backgroundColor:
-                              MaterialStatePropertyAll(Colors.grey),
-                          splashFactory: NoSplash.splashFactory,
-                        )
-                      : const ButtonStyle(
+                (!quizEnded)
+                    ? ElevatedButton(
+                        onPressed: confirmAndNext,
+                        style: (isDisabled)
+                            ? const ButtonStyle(
+                                backgroundColor:
+                                    MaterialStatePropertyAll(Colors.grey),
+                                splashFactory: NoSplash.splashFactory,
+                              )
+                            : const ButtonStyle(
+                                backgroundColor:
+                                    MaterialStatePropertyAll(primaryColor),
+                              ),
+                        child: (isLoading)
+                            ? const CircularProgressIndicator.adaptive()
+                            : const Text(
+                                "Confirm & Next",
+                                style: TextStyle(color: baseLightColor),
+                              ),
+                      )
+                    : ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, "/");
+                        },
+                        style: const ButtonStyle(
                           backgroundColor:
                               MaterialStatePropertyAll(primaryColor),
                         ),
-                  child: const Text(
-                    "Confirm & Next",
-                    style: TextStyle(color: baseLightColor),
-                  ),
-                ),
+                        child: const Text(
+                          "Exit",
+                          style: TextStyle(color: baseLightColor),
+                        ),
+                      ),
               ],
             ),
           ),
