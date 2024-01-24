@@ -30,13 +30,15 @@ class SplashScreen extends StatelessWidget {
               color: baseLightColor,
               fontSize: heading,
             ),
-            child: AnimatedTextKit(
-              animatedTexts: [
-                TypewriterAnimatedText(
-                  ".... ..", // hi
-                  speed: const Duration(milliseconds: 150),
-                ),
-              ],
+            child: Expanded(
+              child: AnimatedTextKit(
+                animatedTexts: [
+                  TypewriterAnimatedText(
+                    ".... ..", // hi
+                    speed: const Duration(milliseconds: 150),
+                  ),
+                ],
+              ),
             ),
           ),
         ],

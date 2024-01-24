@@ -146,133 +146,121 @@ class _QuizControlsState extends State<QuizControls> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
+    return ListView(
       children: [
-        Expanded(
-          flex: 2,
-          child: (quizEnded)
-              ? QuestionDisplay(
-                  questionCount: 10, // default value (always fixed)
-                  isAudioQuestion: false, // default value (always fixed)
-                  questionText:
-                      "You scored $correctAnswerCount/10. Thanks for playing.\n... . .   -.-- --- ..-   .- --. .- .. -. -.-.--",
-                  correctAnswerCount: correctAnswerCount,
-                )
-              : QuestionDisplay(
-                  questionCount: questionCount,
-                  isAudioQuestion: questions[pickedIndex].isAudioQuestion,
-                  questionText: questions[pickedIndex].question,
-                  correctAnswerCount: correctAnswerCount,
-                ),
-        ),
-        Expanded(
-          flex: 3,
-          child: Container(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                const Text("Only one correct answer:"),
+        (quizEnded)
+            ? QuestionDisplay(
+                questionCount: 10, // default value (always fixed)
+                isAudioQuestion: false, // default value (always fixed)
+                questionText:
+                    "You scored $correctAnswerCount/10. Thanks for playing.\n... . .   -.-- --- ..-   .- --. .- .. -. -.-.--",
+                correctAnswerCount: correctAnswerCount,
+              )
+            : QuestionDisplay(
+                questionCount: questionCount,
+                isAudioQuestion: questions[pickedIndex].isAudioQuestion,
+                questionText: questions[pickedIndex].question,
+                correctAnswerCount: correctAnswerCount,
+              ),
+        Container(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const Text("Only one correct answer:"),
 
-                const SizedBox(height: 8.0),
+              const SizedBox(height: 8.0),
 
-                // show correct as well as the incorrect options
-                if (showResult)
-                  for (int i = 0;
-                      i < questions[pickedIndex].options.length;
-                      i++)
-                    ListTile(
-                      // post answer view user can't select anything
-                      onTap: null, // always remain disabled
-                      enabled: false, // always remain disabled
-                      title: (selectedOptionIndex ==
-                              questions[pickedIndex].options[i].optionId)
-                          ? OptionSerializer(index: i, isChosen: true)
-                          : OptionSerializer(index: i, isChosen: false),
-                      subtitle: Text(
-                        questions[pickedIndex].options[i].option,
-                        style: (questions[pickedIndex].isAudioQuestion)
-                            ? const TextStyle(fontSize: body)
-                            : const TextStyle(fontSize: subheading),
-                      ),
-                      trailing: (questions[pickedIndex].correctOptionId ==
-                              questions[pickedIndex].options[i].optionId)
-                          ? const Icon(Icons.check_circle)
-                          : const Icon(Icons.cancel),
+              // show correct as well as the incorrect options
+              if (showResult)
+                for (int i = 0; i < questions[pickedIndex].options.length; i++)
+                  ListTile(
+                    // post answer view user can't select anything
+                    onTap: null, // always remain disabled
+                    enabled: false, // always remain disabled
+                    title: (selectedOptionIndex ==
+                            questions[pickedIndex].options[i].optionId)
+                        ? OptionSerializer(index: i, isChosen: true)
+                        : OptionSerializer(index: i, isChosen: false),
+                    subtitle: Text(
+                      questions[pickedIndex].options[i].option,
+                      style: (questions[pickedIndex].isAudioQuestion)
+                          ? const TextStyle(fontSize: body)
+                          : const TextStyle(fontSize: subheading),
                     ),
+                    trailing: (questions[pickedIndex].correctOptionId ==
+                            questions[pickedIndex].options[i].optionId)
+                        ? const Icon(Icons.check_circle)
+                        : const Icon(Icons.cancel),
+                  ),
 
-                // active selection field
-                if (!showResult)
-                  for (int i = 0;
-                      i < questions[pickedIndex].options.length;
-                      i++)
-                    ListTile(
-                      onTap: () {
-                        setState(() {
-                          // set selected index
-                          selectedOptionIndex =
-                              questions[pickedIndex].options[i].optionId;
+              // active selection field
+              if (!showResult)
+                for (int i = 0; i < questions[pickedIndex].options.length; i++)
+                  ListTile(
+                    onTap: () {
+                      setState(() {
+                        // set selected index
+                        selectedOptionIndex =
+                            questions[pickedIndex].options[i].optionId;
 
-                          // enable button
-                          isDisabled = false;
-                        });
+                        // enable button
+                        isDisabled = false;
+                      });
+                    },
+                    enabled: true,
+                    title: OptionSerializer(
+                      index: i,
+                      isChosen: false,
+                    ),
+                    subtitle: Text(
+                      questions[pickedIndex].options[i].option,
+                      style: (questions[pickedIndex].isAudioQuestion)
+                          ? const TextStyle(fontSize: body)
+                          : const TextStyle(fontSize: subheading),
+                    ),
+                    trailing: (selectedOptionIndex ==
+                            questions[pickedIndex].options[i].optionId)
+                        ? const Icon(Icons.check_circle)
+                        : const Icon(Icons.circle_outlined),
+                  ),
+
+              const SizedBox(height: 6.0),
+
+              // Next Button
+              (!quizEnded)
+                  ? ElevatedButton(
+                      onPressed: confirmAndNext,
+                      style: (isDisabled)
+                          ? const ButtonStyle(
+                              backgroundColor:
+                                  MaterialStatePropertyAll(Colors.grey),
+                              splashFactory: NoSplash.splashFactory,
+                            )
+                          : const ButtonStyle(
+                              backgroundColor:
+                                  MaterialStatePropertyAll(primaryColor),
+                            ),
+                      child: (isLoading)
+                          ? const CircularProgressIndicator.adaptive()
+                          : const Text(
+                              "Confirm & Next",
+                              style: TextStyle(color: baseLightColor),
+                            ),
+                    )
+                  : ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, "/");
                       },
-                      enabled: true,
-                      title: OptionSerializer(
-                        index: i,
-                        isChosen: false,
+                      style: const ButtonStyle(
+                        backgroundColor: MaterialStatePropertyAll(primaryColor),
                       ),
-                      subtitle: Text(
-                        questions[pickedIndex].options[i].option,
-                        style: (questions[pickedIndex].isAudioQuestion)
-                            ? const TextStyle(fontSize: body)
-                            : const TextStyle(fontSize: subheading),
+                      child: const Text(
+                        "Exit",
+                        style: TextStyle(color: baseLightColor),
                       ),
-                      trailing: (selectedOptionIndex ==
-                              questions[pickedIndex].options[i].optionId)
-                          ? const Icon(Icons.check_circle)
-                          : const Icon(Icons.circle_outlined),
                     ),
-
-                const SizedBox(height: 6.0),
-
-                // Next Button
-                (!quizEnded)
-                    ? ElevatedButton(
-                        onPressed: confirmAndNext,
-                        style: (isDisabled)
-                            ? const ButtonStyle(
-                                backgroundColor:
-                                    MaterialStatePropertyAll(Colors.grey),
-                                splashFactory: NoSplash.splashFactory,
-                              )
-                            : const ButtonStyle(
-                                backgroundColor:
-                                    MaterialStatePropertyAll(primaryColor),
-                              ),
-                        child: (isLoading)
-                            ? const CircularProgressIndicator.adaptive()
-                            : const Text(
-                                "Confirm & Next",
-                                style: TextStyle(color: baseLightColor),
-                              ),
-                      )
-                    : ElevatedButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, "/");
-                        },
-                        style: const ButtonStyle(
-                          backgroundColor:
-                              MaterialStatePropertyAll(primaryColor),
-                        ),
-                        child: const Text(
-                          "Exit",
-                          style: TextStyle(color: baseLightColor),
-                        ),
-                      ),
-              ],
-            ),
+            ],
           ),
         ),
       ],

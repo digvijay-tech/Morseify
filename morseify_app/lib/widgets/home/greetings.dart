@@ -16,14 +16,14 @@ class Greetings extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Hello, John Doe",
+            "Welcome to Morseify!",
             style: TextStyle(
               fontSize: heading,
               fontWeight: FontWeight.bold,
             ),
           ),
           Text(
-            "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+            "Your Journey to Becoming a Morse Code Expert Starts Here!",
             style: TextStyle(
               fontSize: body,
             ),

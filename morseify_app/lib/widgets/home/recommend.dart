@@ -15,41 +15,20 @@ class Recommend extends StatelessWidget {
         children: [
           ListTile(
             onTap: () {
-              print("Run share link function..");
+              print("Open developer portfolio website..");
             },
             leading: const Icon(
-              Icons.recommend,
+              Icons.info_rounded,
               size: 36.0,
             ),
             title: const Text(
-              "Recommend Morseify",
+              "About Morseify",
               style: TextStyle(
                 fontSize: subheading,
               ),
             ),
             subtitle: const Text(
-              "Recommend morseify to a friend and help the community grow.",
-              style: TextStyle(
-                fontSize: body,
-              ),
-            ),
-          ),
-          ListTile(
-            onTap: () {
-              print("Run share feed back function..");
-            },
-            leading: const Icon(
-              Icons.star_purple500_sharp,
-              size: 36.0,
-            ),
-            title: const Text(
-              "Enjoying Morseify",
-              style: TextStyle(
-                fontSize: subheading,
-              ),
-            ),
-            subtitle: const Text(
-              "Share your review on app store or play store to show support.",
+              "Get in touch with me if you have any project ideas or suggestion.",
               style: TextStyle(
                 fontSize: body,
               ),

@@ -5,7 +5,6 @@ import 'package:morseify_app/utilities/themes.dart';
 // views
 import 'package:morseify_app/views/splashscreen.dart';
 import 'package:morseify_app/views/home.dart';
-import 'package:morseify_app/views/settings.dart';
 import 'package:morseify_app/views/quiz/quiz.dart';
 import 'package:morseify_app/views/quiz/quizAttempt.dart';
 import 'package:morseify_app/views/encode.dart';
@@ -37,7 +36,6 @@ class MorseifyApp extends StatelessWidget {
         '/learn/listen': (context) => const PracticeListening(),
         '/quiz': (context) => const Quiz(),
         '/quiz/attempt': (context) => const QuizAttempt(),
-        '/settings': (context) => const Settings(),
       },
     );
   }

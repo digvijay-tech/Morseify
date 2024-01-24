@@ -46,47 +46,45 @@ class QuestionDisplay extends StatelessWidget {
             ],
           ),
           // actual question box (place where question or play button will appear)
-          Expanded(
-            child: Container(
-              margin: const EdgeInsets.only(top: 10.0),
-              padding: const EdgeInsets.all(10.0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: Center(
-                child: (isAudioQuestion)
-                    ? Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text(
-                            "Listen to Morse and answer?",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: heading,
-                              fontWeight: FontWeight.bold,
-                            ),
+          Container(
+            margin: const EdgeInsets.only(top: 10.0),
+            padding: const EdgeInsets.all(10.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            child: Center(
+              child: (isAudioQuestion)
+                  ? Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          "Listen to Morse and answer?",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: heading,
+                            fontWeight: FontWeight.bold,
                           ),
-                          IconButton(
-                            onPressed: () {
-                              print("Play morse code..");
-                              print(questionText);
-                              playMorse(questionText);
-                            },
-                            icon: const Icon(Icons.play_arrow),
-                          ),
-                        ],
-                      )
-                    : Text(
-                        questionText,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          fontSize: heading,
-                          fontWeight: FontWeight.bold,
                         ),
+                        IconButton(
+                          onPressed: () {
+                            print(questionText);
+                            playMorse(questionText);
+                          },
+                          icon: const Icon(Icons.play_arrow),
+                        ),
+                      ],
+                    )
+                  : Text(
+                      questionText,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: heading,
+                        fontWeight: FontWeight.bold,
                       ),
-              ),
+                    ),
             ),
           ),
+
           const Divider(),
         ],
       ),
