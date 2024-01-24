@@ -35,21 +35,21 @@ class WelcomeQuiz extends StatelessWidget {
                   ),
                 ),
                 const Text(
-                  "Become Morse Code Expert!",
+                  "Welcome to the Morseify Quiz Challenge!",
                   style: TextStyle(
                     fontSize: heading,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 const Text(
-                  "Welcome to Morseify's Quiz!",
+                  "Become Morse Code Expert!",
                   style: TextStyle(
                     fontSize: subheading,
                   ),
                 ),
                 const SizedBox(height: 20.0),
                 const Text(
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.",
+                  "Are you ready to test your Morse code skills? Dive into our interactive quiz and challenge yourself! Each quiz is designed to enhance your understanding and speed in Morse code communication. Whether you're a beginner or a seasoned pro, these quizzes cater to all levels.",
                   textAlign: TextAlign.justify,
                   style: TextStyle(
                     fontSize: body,

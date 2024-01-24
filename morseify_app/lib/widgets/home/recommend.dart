@@ -17,6 +17,9 @@ class Recommend extends StatelessWidget {
             onTap: () {
               showAboutDialog(
                 context: context,
+                applicationIcon: const CircleAvatar(
+                  backgroundImage: AssetImage("assets/icons/morseify_logo.png"),
+                ),
                 applicationName: 'Morseify',
                 applicationVersion: '1.0.1',
                 applicationLegalese:
@@ -34,28 +37,7 @@ class Recommend extends StatelessWidget {
               ),
             ),
             subtitle: const Text(
-              "Get in touch with me if you have any project ideas or suggestion.",
-              style: TextStyle(
-                fontSize: body,
-              ),
-            ),
-          ),
-          ListTile(
-            onTap: () {
-              print("Open developer portfolio website..");
-            },
-            leading: const Icon(
-              Icons.person,
-              size: 36.0,
-            ),
-            title: const Text(
-              "Developer",
-              style: TextStyle(
-                fontSize: subheading,
-              ),
-            ),
-            subtitle: const Text(
-              "Get in touch with me if you have any project ideas or suggestion.",
+              "Discover Morseify: Version Info, Licensing, and More",
               style: TextStyle(
                 fontSize: body,
               ),
