@@ -15,7 +15,13 @@ class Recommend extends StatelessWidget {
         children: [
           ListTile(
             onTap: () {
-              print("Open developer portfolio website..");
+              showAboutDialog(
+                context: context,
+                applicationName: 'Morseify',
+                applicationVersion: '1.0.1',
+                applicationLegalese:
+                    "Morseify is a free, personal project offered 'as is' without collection of any user data, provided for educational purposes with no warranties or liabilities assumed.",
+              );
             },
             leading: const Icon(
               Icons.info_rounded,
