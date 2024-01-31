@@ -99,7 +99,7 @@ class _QuizControlsState extends State<QuizControls> {
         endQuiz();
       } else {
         // proceed to next question
-        Timer(const Duration(milliseconds: 500), () {
+        Timer(const Duration(milliseconds: 1400), () {
           setState(() {
             // reset selection
             selectedOptionIndex = -1;
