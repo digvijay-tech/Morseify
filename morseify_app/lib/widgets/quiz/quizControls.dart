@@ -190,8 +190,9 @@ class _QuizControlsState extends State<QuizControls> {
                     ),
                     trailing: (questions[pickedIndex].correctOptionId ==
                             questions[pickedIndex].options[i].optionId)
-                        ? const Icon(Icons.check_circle)
-                        : const Icon(Icons.cancel),
+                        ? const Icon(Icons.check_circle,
+                            color: Color.fromARGB(183, 72, 137, 74))
+                        : const Icon(Icons.cancel, color: Color(0xB1F44336)),
                   ),
 
               // active selection field
