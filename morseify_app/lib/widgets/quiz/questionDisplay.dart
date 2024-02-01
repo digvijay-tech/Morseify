@@ -1,6 +1,6 @@
 // Question Display widget
 import 'package:flutter/material.dart';
-import 'package:morseify_app/utilities/morse.dart';
+import 'package:morseify_app/services/morseAudioService.dart';
 import 'package:morseify_app/utilities/constants.dart';
 
 class QuestionDisplay extends StatelessWidget {
@@ -67,8 +67,7 @@ class QuestionDisplay extends StatelessWidget {
                         ),
                         IconButton(
                           onPressed: () {
-                            print(questionText);
-                            playMorse(questionText);
+                            MorseAudioService.playMorse(questionText);
                           },
                           icon: const Icon(Icons.play_arrow),
                         ),

@@ -18,7 +18,7 @@ class Recommend extends StatelessWidget {
               showAboutDialog(
                 context: context,
                 applicationIcon: const CircleAvatar(
-                  backgroundImage: AssetImage("assets/icons/morseify_logo.png"),
+                  backgroundImage: AssetImage("assets/icons/Morseify.png"),
                 ),
                 applicationName: 'Morseify',
                 applicationVersion: '1.0.1',

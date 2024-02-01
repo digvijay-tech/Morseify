@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:morseify_app/utilities/constants.dart';
 import 'package:morseify_app/utilities/morse.dart';
+import 'package:morseify_app/services/morseAudioService.dart';
 
 class EncodeForm extends StatefulWidget {
   const EncodeForm({super.key});
@@ -20,6 +21,7 @@ class _EncodeFormState extends State<EncodeForm> {
   // cleaning up the controller when widget gets disposed
   @override
   void dispose() {
+    MorseAudioService.stop();
     _inputController.dispose();
     super.dispose();
   }
@@ -69,8 +71,7 @@ class _EncodeFormState extends State<EncodeForm> {
                       IconButton(
                         onPressed: () {
                           if (morseString.isNotEmpty) {
-                            print("Play morse code..");
-                            playMorse(morseString);
+                            MorseAudioService.playMorse(morseString);
                           }
                         },
                         icon: Icon(
@@ -80,6 +81,10 @@ class _EncodeFormState extends State<EncodeForm> {
                       ),
                       IconButton(
                         onPressed: () {
+                          // stop morse audio
+                          MorseAudioService.stop();
+
+                          // reset display
                           setState(() {
                             morseString = "";
                             isMicDisabled = true;

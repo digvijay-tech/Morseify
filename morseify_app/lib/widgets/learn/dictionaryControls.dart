@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:morseify_app/utilities/constants.dart';
 import 'package:morseify_app/utilities/morse.dart';
+import 'package:morseify_app/services/morseAudioService.dart';
 
 // Filterable Dictionary ListView
 class DictionaryControls extends StatefulWidget {
@@ -22,6 +23,14 @@ class _DictionaryControlsState extends State<DictionaryControls> {
     super.initState();
     // initially, displayMorseCodes will show all entries
     displayMorseCodes = Map<String, String>.from(allMorseCodes);
+  }
+
+  @override
+  void dispose() {
+    // stops playing when user leaves the page
+    MorseAudioService.stop();
+
+    super.dispose();
   }
 
   @override
@@ -50,7 +59,7 @@ class _DictionaryControlsState extends State<DictionaryControls> {
             maxLines: 1,
             maxLength: 1,
             decoration: const InputDecoration(
-              hintText: "Search by character..",
+              hintText: "Search a character..",
               prefixIcon: Icon(Icons.search),
               border: OutlineInputBorder(
                 borderSide: BorderSide(color: primaryColor),
@@ -80,7 +89,7 @@ class _DictionaryControlsState extends State<DictionaryControls> {
                       child: ListTile(
                         onTap: () {
                           // playing morse code
-                          playMorse(entry.value);
+                          MorseAudioService.playMorse(entry.value);
                         },
                         title: Text(
                           "${entry.key}     ${entry.value}",
