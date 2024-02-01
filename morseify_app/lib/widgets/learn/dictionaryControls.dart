@@ -18,6 +18,23 @@ class _DictionaryControlsState extends State<DictionaryControls> {
   Map<String, String> displayMorseCodes = {};
   Map<String, String> allMorseCodes = morseCodeMap;
 
+  // filter function
+  void filterResults(value) {
+    // filtering morse codes based on input
+    final query = value.toUpperCase();
+    Map<String, String> filteredMap = {};
+
+    allMorseCodes.forEach((key, value) {
+      if (key.contains(query)) {
+        filteredMap[key] = value;
+      }
+    });
+
+    setState(() {
+      displayMorseCodes = filteredMap;
+    });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -41,21 +58,7 @@ class _DictionaryControlsState extends State<DictionaryControls> {
           margin: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
           child: TextField(
             controller: _searchInputController,
-            onChanged: (value) {
-              // filtering morse codes based on input
-              final query = value.toUpperCase();
-              Map<String, String> filteredMap = {};
-
-              allMorseCodes.forEach((key, value) {
-                if (key.contains(query)) {
-                  filteredMap[key] = value;
-                }
-              });
-
-              setState(() {
-                displayMorseCodes = filteredMap;
-              });
-            },
+            onChanged: filterResults,
             maxLines: 1,
             maxLength: 1,
             decoration: const InputDecoration(

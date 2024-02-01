@@ -45,7 +45,7 @@ class LearningOptions extends StatelessWidget {
                   Text(
                     optionTitle,
                     style: const TextStyle(
-                      fontSize: heading,
+                      fontSize: subheading,
                       color: baseLightColor,
                       fontWeight: FontWeight.bold,
                     ),
