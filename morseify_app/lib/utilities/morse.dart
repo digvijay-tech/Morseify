@@ -78,6 +78,11 @@ String textToMorse(String text) {
 
 // Convert morse code to text
 String morseToText(String morseCode) {
+  // attempt to normalize the morse code
+  // String temp1 = morseCode.replaceAll('.', 'dot');
+  // temp1 = morseCode.replaceAll('-', '-');
+  // print(temp1);
+
   // Split Morse code into words using space, slash, or newline as separators
   final words = morseCode.split(RegExp(r' /|\s|/'));
 

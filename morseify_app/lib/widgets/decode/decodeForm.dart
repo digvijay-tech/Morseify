@@ -96,6 +96,8 @@ class _DecodeFormState extends State<DecodeForm> {
                 ),
                 TextField(
                   controller: _inputController,
+                  smartDashesType: SmartDashesType.disabled,
+                  smartQuotesType: SmartQuotesType.disabled,
                   autocorrect: false,
                   enableSuggestions: false,
                   onChanged: (value) {
@@ -129,6 +131,9 @@ class _DecodeFormState extends State<DecodeForm> {
                   child: ElevatedButton.icon(
                     onPressed: () {
                       String morseInput = _inputController.text;
+
+                      // removing '/' from morse string
+                      morseInput = morseInput.replaceAll("/", "");
 
                       if (morseInput.isNotEmpty) {
                         if (isValidMorse(morseInput)) {
